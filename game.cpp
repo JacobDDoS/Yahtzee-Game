@@ -659,18 +659,17 @@ void AIRoll(int playerID) {
           return;
         }
       }
-
-      if (find(upperNums, upperNums+6, pointCombinations[indexOfMaxValue]) != upperNums+6) {
-        playersUpperScore[playerID] += maxValue;
-      }
-
-      // cout << "ADDING: " << maxValue << endl;
-      // cout << "WHAT IT IS: " << pointCombinations[indexOfMaxValue] << endl;
-
-      curPoints[playerID] += maxValue;
-      possiblePointCombinationsForEachPlayer[playerID][indexOfMaxValue]=false;
     }
   }
+  if (find(upperNums, upperNums+6, pointCombinations[indexOfMaxValue]) != upperNums+6) {
+    playersUpperScore[playerID] += maxValue;
+  }
+
+  // cout << "ADDING: " << maxValue << endl;
+  // cout << "WHAT IT IS: " << pointCombinations[indexOfMaxValue] << endl;
+
+  curPoints[playerID] += maxValue;
+  possiblePointCombinationsForEachPlayer[playerID][indexOfMaxValue]=false;
 }
 
 void endScreen() {
@@ -752,7 +751,7 @@ int main() {
   sort(curPoints.begin(), curPoints.end(), greater<int>());
 
   for (int i=0;i<isPlayer.size();i++) {
-    outputFile << curPoints[i] << " ";
+    outputFile << curPoints[i] << ", ";
   }
   outputFile.close();
 
